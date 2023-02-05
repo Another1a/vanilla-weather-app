@@ -12,6 +12,7 @@
     />
 
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script
       src="https://kit.fontawesome.com/a922b1aade.js"
       crossorigin="anonymous"
@@ -26,9 +27,9 @@
             <div class="col-9">
               <input
                 type="search"
-                placeholder="Enter your city"
+                placeholder="Enter your city..."
                 class="form-control"
-                id="searchInput"
+                id="search-input"
               />
             </div>
             <div class="col-3">
@@ -38,42 +39,55 @@
                 value="Search"
               />
             </div>
-            <div class="weatherInfo">
+            <div class="weather-info">
               <div class="row">
                 <div class="col-md-6">
-                  <h1>New York</h1>
+                  <h1 id="city"></h1>
                   <ul>
                     <li>
                       Tuesday 17:31,
 
-                      <span class="describtion"> clear sky</span>
+                      <span id="description"></span>
                     </li>
                     <li>
                       Humidity:
-                      <span class="humidity"> 40</span>
-                      %, Wind:
-
-                      <span class="wind">4.12</span>
-                      km/h
+                      <strong>
+                        <span id="humidity"></span>
+                        %</strong
+                      >, Wind:
+                      <strong>
+                        <span id="wind"></span>
+                        km/h</strong
+                      >
                     </li>
                   </ul>
                 </div>
                 <div class="col-md-6">
-                  <i class="fa-solid fa-sun"></i>
-
-                  <span class="temperature">10</span>
-                  <span class="unit">°C</span>
+                  <div class="temperature-container d-flex justify-content-end">
+                    <div class="icon">
+                      <img
+                        src="icon/cloudy.png"
+                        alt="cloudy"
+                        width="50"
+                        height="50"
+                      />
+                    </div>
+                    <div>
+                      <span id="temperature"></span>
+                      <span class="unit">°C</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </form>
-      </div>
-      <small
-        >Open source code on my
+        <small
+          >Open source code on my
 
-        <a href="#"> GitHub</a>
-      </small>
+          <a href="#"> GitHub</a>
+        </small>
+      </div>
     </div>
     <script src="src/app.js"></script>
   </body>
