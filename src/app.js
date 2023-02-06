@@ -1,5 +1,5 @@
 let apiKey = "40t3642569434232b59fd0dfaf2o59af";
-let query = "London";
+let query = "Lisbon";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}&units=metric`;
 
 function formatDate(timestamp) {
@@ -39,6 +39,13 @@ function displayWeather(response) {
   wind.innerHTML = response.data.wind.speed;
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+
+  icon.setAttribute("alt", response.data.condition.description);
 }
 
 axios.get(apiUrl).then(displayWeather);

@@ -33,6 +33,7 @@ ul {
 }
 .weather #search-input {
   background: #f9f7fe;
+
   border: none;
   border-radius: 6px;
   color: rgba(39, 33, 66, 0.4);
@@ -44,6 +45,7 @@ ul {
 }
 .weather .btn {
   background: #885df1;
+  /* background: rgb(124, 187, 231); */
   padding: 15px 0;
   border: none;
   font-size: 16px;
@@ -56,7 +58,7 @@ ul {
 #temperature {
   font-weight: 700;
   color: #212121;
-  font-size: 70px;
+  font-size: 65px;
 }
 .weather-info .temperature-container {
   margin-top: 30px;
@@ -68,13 +70,12 @@ ul {
   font-size: 28px;
   font-weight: 400;
 }
-.icon {
+.weather-icon {
   position: relative;
-  top: 24px;
-  left: -10px;
+  top: 10px;
 }
 
 li strong {
-  color: #f65282;
+  color: rgb(124, 187, 231);
   font-weight: 400;
 }
