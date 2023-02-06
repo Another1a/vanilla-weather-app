@@ -4,7 +4,6 @@ function search(city) {
 
   axios.get(apiUrl).then(displayWeather);
 }
-search("Amsterdam");
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -50,6 +49,7 @@ function displayWeather(response) {
   );
 
   icon.setAttribute("alt", response.data.condition.description);
+  celsiusTemperature = response.data.temperature.current;
 }
 
 function searchWeather(event) {
@@ -59,5 +59,32 @@ function searchWeather(event) {
   search(cityInput.value);
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsuisLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheit);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsuisLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchWeather);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsuisLink = document.querySelector("#celsius-link");
+celsuisLink.addEventListener("click", displayCelsiusTemp);
+
+search("Singapore");
