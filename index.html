@@ -22,7 +22,7 @@
   <body>
     <div class="container">
       <div class="weather">
-        <form>
+        <form id="search-form">
           <div class="row">
             <div class="col-9">
               <input
@@ -30,6 +30,7 @@
                 placeholder="Enter your city..."
                 class="form-control"
                 id="search-input"
+                autocomplete="off"
               />
             </div>
             <div class="col-3">
@@ -41,7 +42,7 @@
             </div>
             <div class="weather-info">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                   <h1 id="city"></h1>
                   <ul>
                     <li>
@@ -63,14 +64,16 @@
                     </li>
                   </ul>
                 </div>
-                <div class="col-md-6">
-                  <div class="temperature-container d-flex justify-content-end">
+                <div class="col-md-5">
+                  <div
+                    class="temperature-container d-flex justify-content-start"
+                  >
                     <div class="weather-icon">
                       <img
                         src=""
                         alt="cloudy"
-                        width="80"
-                        height="80"
+                        width="70"
+                        height="70"
                         id="icon"
                       />
                     </div>

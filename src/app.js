@@ -1,6 +1,10 @@
-let apiKey = "40t3642569434232b59fd0dfaf2o59af";
-let query = "Lisbon";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "40t3642569434232b59fd0dfaf2o59af";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayWeather);
+}
+search("Amsterdam");
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -48,4 +52,12 @@ function displayWeather(response) {
   icon.setAttribute("alt", response.data.condition.description);
 }
 
-axios.get(apiUrl).then(displayWeather);
+function searchWeather(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-input");
+
+  search(cityInput.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchWeather);
