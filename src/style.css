@@ -81,24 +81,26 @@ ul {
 }
 
 li strong {
-  color: #885df1;
+  color: #212121;
   font-weight: 500;
+  opacity: 0.7;
 }
-.units a {
+/* .units a {
   text-decoration: none;
   color: #885df1;
-}
+} */
 
 .temperature-container .active {
   color: #212121;
   cursor: default;
 }
 small a {
-  color: rgb(238, 74, 101);
+  color: #885df1;
 }
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
+  padding-bottom: 30px;
 }
 .weather-forecast-day {
   font-size: 16px;
@@ -110,6 +112,7 @@ small a {
 .weather-forecast-temp {
   font-size: 18px;
   color: #212121;
+  opacity: 0.7;
 }
 .weather-forecast-temp-min {
   opacity: 0.5;

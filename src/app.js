@@ -74,7 +74,7 @@ function displayForecast(response) {
 
   let forecast = response.data.daily;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 6) {
       forecastHtml =
         forecastHtml +
         `<div class="col-2">
@@ -87,7 +87,7 @@ function displayForecast(response) {
                     forecastDay.condition.icon
                   }.png";
                    alt=""
-                   width="42"
+                   width="44"
                  
                 />
                 <div class="weather-forecast-temp">
@@ -111,32 +111,32 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function displayFahrenheitTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsuisLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheit);
-}
+// function displayFahrenheitTemp(event) {
+//   event.preventDefault();
+//   let temperatureElement = document.querySelector("#temperature");
+//   celsuisLink.classList.remove("active");
+//   fahrenheitLink.classList.add("active");
+//   let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
+//   temperatureElement.innerHTML = Math.round(fahrenheit);
+// }
 
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsuisLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
+// function displayCelsiusTemp(event) {
+//   event.preventDefault();
+//   let temperatureElement = document.querySelector("#temperature");
+//   celsuisLink.classList.add("active");
+//   fahrenheitLink.classList.remove("active");
+//   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+// }
 
-let celsiusTemperature = null;
+// let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchWeather);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+// let fahrenheitLink = document.querySelector("#fahrenheit-link");
+// fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
-let celsuisLink = document.querySelector("#celsius-link");
-celsuisLink.addEventListener("click", displayCelsiusTemp);
+// let celsuisLink = document.querySelector("#celsius-link");
+// celsuisLink.addEventListener("click", displayCelsiusTemp);
 
 search("Singapore");
