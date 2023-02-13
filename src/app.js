@@ -50,6 +50,7 @@ function displayWeather(response) {
 
   icon.setAttribute("alt", response.data.condition.description);
   celsiusTemperature = response.data.temperature.current;
+  getForecast(response.data.coordinates);
 }
 
 function searchWeather(event) {
@@ -57,6 +58,57 @@ function searchWeather(event) {
   let cityInput = document.querySelector("#search-input");
 
   search(cityInput.value);
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let day = date.getDay();
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHtml = `<div class="row">`;
+
+  let forecast = response.data.daily;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="col-2">
+                <div class="weather-forecast-day">${formatDay(
+                  forecastDay.time
+                )}</div>
+
+                <img
+                  src= "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                    forecastDay.condition.icon
+                  }.png";
+                   alt=""
+                   width="42"
+                 
+                />
+                <div class="weather-forecast-temp">
+                  <span class="weather-forecast-temp-max">${Math.round(
+                    forecastDay.temperature.maximum
+                  )}° </span>
+                  <span class="weather-forecast-temp-min">${Math.round(
+                    forecastDay.temperature.minimum
+                  )}°</span>
+                </div>
+              </div>`;
+    }
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "40t3642569434232b59fd0dfaf2o59af";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayFahrenheitTemp(event) {

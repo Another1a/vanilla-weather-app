@@ -109,7 +109,7 @@ small a {
 }
 .weather-forecast-temp {
   font-size: 18px;
-  color: rgb(238, 74, 101);
+  color: #212121;
 }
 .weather-forecast-temp-min {
   opacity: 0.5;
